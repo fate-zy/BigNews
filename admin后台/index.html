@@ -22,14 +22,14 @@
         <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
         <div class="user_info">
             <img src="images/2.jpg" alt="person">
-            <span>欢迎&nbsp;&nbsp;李思思</span>
+            <span>欢迎&nbsp;&nbsp;<i style="font-style: normal;">默认名字</i></span>
             <b>管理员</b>
         </div>
         <!-- 左侧导航栏 -->
         <div class="menu">
-            <div class="level01 active"><a href="#" target="main_frame"><i
+            <div class="level01 active"><a href="./main_count.html" target="main_frame"><i
                         class="iconfont icon-yidiandiantubiao04"></i><span>首页</span></a></div>
-            <div class="level01"><a href="#"><i class="iconfont icon-icon-article"></i><span>文章管理</span><b
+            <div class="level01"><a href="#" ><i class="iconfont icon-icon-article"></i><span>文章管理</span><b
                         class="iconfont icon-arrowdownl"></b></a></div>
             <ul class="level02">
                 <!-- 左侧 文章列表 -->
@@ -121,6 +121,29 @@
                 //跳转到登录页
                 window.location.href = './login.html'
             }
+        })
+
+        //三 ：左侧一级菜单  设置点击事件
+        $('div.level01').on('click',function(){
+            //3.1 点击一级菜单添加 active类， 其他移除
+            $(this).addClass('active').siblings('div').removeClass('active');
+            //3.2 判断 点击的鼠标事 ’文章管理‘ 这个一级菜单
+            if($(this).index()==1){
+                //二级菜单ul 显示就隐藏 slideToggle
+                $('ul.level02').slideToggle();
+                //小尖尖（b标签）要做css旋转动画（添加一个rotate0类）
+                $(this).find('b').toggleClass('rotate0');
+                //点击后跳转二级菜单  第一个
+                $('ul.level02>li:eq(0)>a')[0].click();
+                // 二级菜单第一个 添加 active类
+                $('ul.level02>li:eq(0)').trigger('click');
+            }
+        })
+        //四 ：左侧二级菜单
+        $('ul.level02>li').on('click',function(){
+            //当前点击的二级菜单active类，其他移除
+            $(this).addClass('active').siblings('li').removeClass('active');
+            
         })
 
     })
