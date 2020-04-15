@@ -132,7 +132,7 @@
 
         //五 ：当前文件
         //获取 需要编辑页面的id
-        var articleId = window.location.href.split('=')[1];
+        var articleId = window.location.search.split('=')[1];
         console.log(articleId);
         //发送ajax请求
         $.ajax({
